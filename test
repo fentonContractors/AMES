@@ -1,0 +1,106 @@
+<script>
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+function createFenotable() {
+
+  //create the div we are going to modify and return as our fenotable
+  var fenotable = document.createElement('DIV');
+  
+  //define the fenotable action properties and methods
+  fenotable.tableAction = {
+    
+    appendTo: function(element) { appendFenotableTo(fenotable,element); },
+    buildTableBody: function() { buildTableBody(fenotable); },
+    buildTableHeaders: function() { buildTableHeaders(fenotable); },
+    buildTableFooter: function() { buildTableFooter(fenotable); },
+    formatTable: function() { formatFenoboxes(fenotable); },
+    sizeTable: function() { sizeFenotable(fenotable); },
+    sortRows: function() { sortRows(fenotable); },
+    
+  };
+  
+  fenotable.dataCalc = {
+    
+    getCellIdByIndex: function(row,column) { return getCellIdByIndex(row,column,fenotable); },
+    getCellByIndex: function(row,column) { return getCellByIndex(row,column,fenotable); },
+    setCellId: function(dataCell) { setFenotableCellId(dataCell,fenotable); },
+    getRowIndex: function(dataCell) { return getRowIndex(dataCell,fenotable); },
+    getColumnIndex: function(dataCell) { return getColumnIndex(dataCell,fenotable); },
+    getCellBelow: function(dataCell) { return getCellDirectlyBelow(dataCell,fenotable); }
+  
+  };
+  
+  fenotable.tableTrigger = {
+  
+    updateInterval: 5, //In seconds
+    timerId: null,
+    startUpdating: function() { startUpdateTimer(fenotable); }
+    
+  };
+  
+  //define the fenostor properties and methods
+  fenotable.fenostor = {
+    
+    //sorting
+    columnSortOrder: [],
+    columnSortPriority: [],
+    
+    defaultPagesToLoad: 3,
+    currentPagesLoaded: 3,
+    numberOfPages: 0,
+    currentPage: 0,
+    serverDP: null,
+    unpackServerDP: function() { unpackServerDataPackage(fenotable); },
+    tableIdNumber: null,
+    tableName: 'none',
+    tableWidth: 100,
+    AMESTableName: '',
+    numberOfRows: null,
+    numberOfRowsPerPage: 10,
+    numberOfColumns: null,
+    numberOfHeaders: 1,
+    columnNames: [],
+    columnDisplayNames: [],
+    columnWidths: [],
+    AMESColumnTypes: [],
+    fenodata: [],
+    tableData: [],
+    rowIds: [],
+    setUpTimeStartInMiliseconds: null,
+    setUpTime: null,
+    SQLConnectionTime: null,
+    resultOrganizationTime: null,
+    cellType: 'fenobox', //can either be a feno box or feno table NEED TO CHANGE TO ONLY FENOBOX
+    testingMode: false //If true, No fenobos or fenotables are appended. Puts in cell ID's only.
+    
+  };
+  
+
+  //assign the charteristics of the feno table
+  fenotable.className = 'fenotable';
+  
+  
+  var fenotableHeader = document.createElement('DIV');
+  fenotableHeader.className = 'fenotableHeader';
+  fenotable.appendChild(fenotableHeader);
+  
+  var fenotableBody = document.createElement('DIV');
+  fenotableBody.className = 'fenotableBody';
+  fenotableBody.id = createUniqueId();
+  fenotable.appendChild(fenotableBody);
+  
+  var fenotableFooter = document.createElement('DIV');
+  fenotableFooter.className = 'fenotableFooter';
+  fenotable.appendChild(fenotableFooter);
+  
+  elevation(fenotable)
+  
+
+  return fenotable;
+
+}
+//----------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+</script>
+
+
